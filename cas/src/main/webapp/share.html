@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>公用弹出框架</title>
+<link href="styles/base.css" rel="stylesheet" type="text/css" />
+<link href="styles/global.css" rel="stylesheet" type="text/css" />
+<link href="styles/index.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" type="text/css" href="styles/forms.css"/>
+<link rel="stylesheet" type="text/css" href="styles/modules.css"/>
+<script type="text/javascript" src="scripts/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="scripts/jqModal.js"></script>
+<script type="text/javascript" src="scripts/includeHeader.js"></script>
+<script type="text/javascript" src="scripts/includeBottom.js"></script>
+<script type="text/javascript" src="scripts/easySlider1.7.js"></script>
+<script type="text/javascript" src="scripts/common.js"></script>
+<script type="text/javascript" src="scripts/init.js"></script>
+<script type="text/javascript">
+$(function() {
+//	弹出框
+	$('#myModal').jqm({trigger:'#share_pop',modal:true});
+	$('#myModal .close').live('click',function(){
+		$('#myModal').jqmHide();
+		});
+	$('#myModal .bt_save').live('click',function(){
+		$('#myModal').jqmHide();
+		});
+	$('#myModal .bt_cancel').live('click',function(){
+		$('#myModal').jqmHide();
+		});	
+});
+</script>
+</head>
+<body>
+<!-- 包含头部 -->
+<div id="topbar" class="content"></div>
+<div id="header" class="content"></div>
+<!-- /包含头部 -->
+<div id="content" class="content"> 
+  <a id="share_pop" href="javascript:void(0)" class="collection">公用弹出</a>
+</div>
+<!-- 包含的帮助和尾部 -->
+<div id="help" class="help"></div>
+<div id="footer"></div>
+<!-- /包含的帮助和尾部 -->
+<!--------------------------弹框begin-------------------------->
+<div id="myModal" class="share_pop_b share_pop_b6">
+  <div class="modal_header"> <span class="close"></span>
+    <h3>收藏商品</h3>
+  </div>
+  <div class="body">
+    <div class="share_con">
+      <p>恭喜您成功！</p>
+      
+      <ul class="me_msg">
+          <li>
+            <label class="label_title"> 验证码：</label>
+            <div class="field"><input type="text" class=" input200" /></div>
+          </li>
+        </ul>
+      
+      
+      
+    </div>
+    <div class="tac cfx padb20">
+      <input type="button" class="btn btn_org bt_save"  value="保存" />
+      <input type="button" class="btn btn_red ml10 bt_cancel"  value="取消" />
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="generate-ear" name="emall-cas">
+	<import file="../Cmp_EMALL-COMPILE/build-import.xml"/>
+ 	<path id="emall-cas.classpath">
+        <pathelement location="src/main/webapp/WEB-INF/classes"/>
+        <path refid="emall-web.classpath"/>
+        <fileset dir="src/main/webapp/WEB-INF/lib">
+          <include name="**/*.jar"/>
+        </fileset>
+    </path>
+    <target name="init">
+        <mkdir dir="src/main/webapp/WEB-INF/classes"/>
+        <mkdir dir="${project.distribution.dir}"/>
+        <copy includeemptydirs="false" todir="src/main/webapp/WEB-INF/classes">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+     
+        <copy includeemptydirs="false" todir="src/main/webapp/WEB-INF/classes">
+            <fileset dir="src/main/resources">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+                <exclude name="uat/*.xml"/>
+            </fileset>
+        </copy>
+        
+        <copy includeemptydirs="false" todir="src/main/webapp/WEB-INF/classes">
+            <fileset dir="src/main/resources/uat">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+	
+    <target name="clean">
+        <delete dir="src/main/webapp/WEB-INF/classes"/> 
+    </target>
+    
+    <target depends="clean" name="cleanall"></target>
+    
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"></target>
+    
+    
+      <!--复制依赖包的class文件进web项目中-->
+   <target name="build-upon">	
+	   <copy todir="src/main/webapp/WEB-INF/classes" >
+		  		 <fileset dir="${project.build.dir}/Cmp_EMALL-IMPL/${project.target.dir}/">
+           </fileset>
+		  </copy>
+		  <copy todir="src/main/webapp/WEB-INF/classes" >
+		  		 <fileset dir="${project.build.dir}/Cmp_EMALL-CORE/${project.target.dir}/">
+           </fileset>
+		  </copy>
+		  <copy todir="src/main/webapp/WEB-INF/classes" >
+		  		 <fileset dir="${project.build.dir}/Cmp_EMALL-WEB/${project.target.dir}/">
+           </fileset>
+		  </copy>
+   		<copy todir="src/main/webapp/WEB-INF/classes" >
+   			  			 <fileset dir="${project.build.dir}/Cmp_EMALL-SDK/${project.target.dir}">
+   	      	     </fileset>
+   		</copy>
+	 </target>
+    
+
+    <target depends="init,build-upon" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac encoding="UTF-8" debug="true" debuglevel="${debuglevel}" destdir="src/main/webapp/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="src/main/java"/>
+            <classpath refid="emall-cas.classpath"/>
+        </javac>
+      
+        <javac encoding="UTF-8" debug="true" debuglevel="${debuglevel}" destdir="src/main/webapp/WEB-INF/classes" source="${source}" target="${target}">
+            <src path="src/main/resources"/>
+            <classpath refid="emall-cas.classpath"/>
+        </javac>
+    </target>
+	
+	
+	<target name="generate-jars" ></target>
+	
+  <target depends="cleanall,build,generate-jars" name="generate-war">
+    	  <property name="war.name" value="cas-${project.distribution.majorVersion}_${project.distribution.buildNumber}.war"/>
+  	      <property name="sdk.jar.name" value="sdk-${project.distribution.majorVersion}_${project.distribution.buildNumber}.jar"/>
+  	      <property name="impl.jar.name" value="impl-${project.distribution.majorVersion}_${project.distribution.buildNumber}.jar"/>
+  	      <property name="core.jar.name" value="core-${project.distribution.majorVersion}_${project.distribution.buildNumber}.jar"/>
+  	      <property name="web.jar.name" value="web-${project.distribution.majorVersion}_${project.distribution.buildNumber}.jar"/>
+  	      <delete file="./src/main/webapp/WEB-INF/lib/jsf-api.jar"/>
+  	      <delete file="./src/main/webapp/WEB-INF/lib/jsf-impl.jar"/>
+  	      <delete file="./src/main/webapp/WEB-INF/lib/jstl-1.2.jar"/>
+  	<war destfile="${project.distribution.dir}/${war.name}" webxml="${project.build.dir}/Cmp_EMALL-CAS/src/main/webapp/WEB-INF/web.xml">
+          	  <fileset dir="${project.build.dir}/Cmp_EMALL-CAS/src/main/webapp">
+          	    <include name="META-INF/*.*"/>
+          	  	<include name="WEB-INF/**/*.*"/>
+          	  	<include name="*.jsp"/>
+          	  </fileset> 
+      	</war>
+  	
+  	     <echo>开始打包静态资源!</echo>
+  	     <zip destfile="${project.distribution.dir}/cas_web.zip">
+  	        <fileset dir="${project.build.dir}/Cmp_EMALL-CAS/src/main/webapp">
+  	        	 <include name="images/**/*.*"/>
+  	        	 <include name="Library/**/*.*"/>
+  	        	 <include name="scripts/**/*.*"/>
+  	        	 <include name="styles/**/*.*"/>
+  	        	 <include name="*.ico"/>
+  	        	 <include name="*.html"/> 	        	
+  	        	 <include name="**/ICBCChromeExtension.msi"/>
+  	        	 <include name="**/AxSafeControls_64.cab"/>
+  	        	 <include name="**/AxSafeControls.cab"/>  
+  	        </fileset>
+  	     </zip>
+  				
+      	<copy file="${project.distribution.dir}/${war.name}" tofile="${project.distribution.dir}/cas.war"/>
+  </target>
+	
+	<target name="generate-ear" depends="generate-war">
+			<echo>开始制作ear文件包……</echo>
+			<ear destfile="${project.distribution.dir}/cas.ear" appxml="${project.build.dir}/Cmp_EMALL-CAS/src/main/webapp/META-INF/application.xml">
+				<fileset dir="${project.distribution.dir}" includes="cas.war" />
+			</ear>
+			<echo>ear包制作完成！</echo>
+		</target>
+	
+	<!--为了生成增量包，先打动静不分离的全量包-->
+	 <target depends="cleanall,build,generate-jars" name="generate-all-war">
+	    	  <property name="war.name" value="cas-${project.distribution.majorVersion}_${project.distribution.buildNumber}.war"/>
+	  	      <property name="sdk.jar.name" value="sdk-${project.distribution.majorVersion}_${project.distribution.buildNumber}.jar"/>
+	  	      <property name="impl.jar.name" value="impl-${project.distribution.majorVersion}_${project.distribution.buildNumber}.jar"/>
+	  	      <property name="core.jar.name" value="core-${project.distribution.majorVersion}_${project.distribution.buildNumber}.jar"/>
+	  	      <property name="web.jar.name" value="web-${project.distribution.majorVersion}_${project.distribution.buildNumber}.jar"/>
+	  	      <delete file="./src/main/webapp/WEB-INF/lib/jsf-api.jar"/>
+	  	      <delete file="./src/main/webapp/WEB-INF/lib/jsf-impl.jar"/>
+	  	      <delete file="./src/main/webapp/WEB-INF/lib/jstl-1.2.jar"/>
+	  	<war destfile="${project.distribution.dir}/${war.name}" webxml="${project.build.dir}/Cmp_EMALL-CAS/src/main/webapp/WEB-INF/web.xml">
+	          	  <fileset dir="${project.build.dir}/Cmp_EMALL-CAS/src/main/webapp">
+	          	  </fileset> 
+	      		<lib file="${project.distribution.dir}/${sdk.jar.name}" />
+	      		<lib file="${project.distribution.dir}/${core.jar.name}" />
+	      		<lib file="${project.distribution.dir}/${impl.jar.name}" />
+	      		<lib file="${project.distribution.dir}/${web.jar.name}" />
+	      	</war>
+	  </target>
+	  	
+  
+ <!-- 根据list.txt文件指定的文件，进行增量打包-->
+  <target name="increment" depends="copyTempFile,copyFile" >  	          		
+      <zip destfile="${project.distribution.dir}/cas-${project.distribution.majorVersion}.zip"> 
+	   		<fileset dir="${project.target.dir}"/>
+      </zip>
+  </target> 
+  
+    <!--拷贝临时文件进-->
+  <target name="copyTempFile">
+  	<mkdir dir="${project.target.dir}" />
+  			  <copy todir="${project.target.dir}" >
+		  		 <fileset dir="${project.build.dir}/Cmp_EMALL-IMPL/temp/target/">
+           </fileset>
+		  </copy>
+		  <copy todir="${project.target.dir}" >
+		  		 <fileset dir="${project.build.dir}/Cmp_EMALL-CORE/temp/target/">
+           </fileset>
+		  </copy>
+		  <copy todir="${project.target.dir}" >
+		  		 <fileset dir="${project.build.dir}/Cmp_EMALL-SDK/temp/target/" >
+           </fileset>
+		  </copy>		 	
+  </target>
+  
+  
+  
+  <target name="copyFile">
+  	<mkdir dir="${project.target.dir}"/>  
+  	<mkdir dir="${project.build.dir}/Cmp_EMALL-CAS/temp" />
+  	<mkdir dir="${project.build.dir}/Cmp_EMALL-CAS/temp/java" />
+  	<mkdir dir="${project.build.dir}/Cmp_EMALL-CAS/temp/resources" />
+  							<loadfile property="message" srcFile="${project.build.dir}/${list.file.name}" ></loadfile>
+            		<property name="filePath" value="${project.build.dir}/${list.file.name}" />
+								<propertyregex override="yes"
+				      	property="filePath"  
+				      	input="${message}" regexp="\r\n" replace=","/>
+								<if>
+						 				<equals arg1="${filePath}" arg2="$${filePath}" />
+						 			<then>
+						   			<echo message="the ${list.file.name} is null! don't deal!" />
+						 			</then>
+						 		<else>
+						   		<echo message="increment runniung" />
+						   		<for list="${filePath}" param="letter" delimiter="," trim="true" parallel="false" keepgoing="false">
+						  			<sequential>			    		
+						    			 <copy  todir="${project.build.dir}/emall-cas/temp">
+						    			 			<fileset dir="src/main/">
+						    			 					<filename name="**/@{letter}" />
+						    			 			</fileset>
+						    			 </copy> 
+										 </sequential>
+									</for>
+						 		</else>
+								</if>	
+								
+				<javac encoding="UTF-8" debug="true"    debuglevel="${debuglevel}" destdir="${project.target.dir}" source="${source}" target="${target}">
+            <src path="${project.build.dir}/Cmp_EMALL-CAS/temp/java"/>
+            <classpath refid="emall-operation.classpath"/>
+        </javac>
+        
+      <copy includeemptydirs="false" todir="${project.target.dir}">
+    	     <fileset dir="${project.build.dir}/Cmp_EMALL-CAS/temp/resources">
+            	<exclude name="**/*.launch"/>
+    	     </fileset>
+    	</copy>
+            
+ 			  <delete dir="${project.build.dir}/Cmp_EMALL-CAS/temp"/>		   
+ 			  		
+  </target>
+  
+  <target name="clean-bak">
+  			  <delete dir="${project.target.dir}"/> 
+  </target>
+  
+  
+</project>

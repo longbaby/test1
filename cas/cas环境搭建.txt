@@ -1,0 +1,78 @@
+cas  
+1.cas端
+	 ：WEB-INF/cas.properties中
+		cas.server.url=http\://login.mall.icbc.com.cn\:8888/cas  	
+		cas.server.login=http\://login.mall.icbc.com.cn\:8888/cas/login #login.mall.icbc.com.cn\:8888 
+		cas.client.url=http\://mall.icbc.com.cn\:8180/j_spring_cas_security_check   
+		cas.logout.url=http\://login.mall.icbc.com.cn\:8888/cas/logout?service\=http\://mall.icbc.com.cn\:8180/ 
+		server.name=http://login.mall.icbc.com.cn\:8888
+		  
+			login.mall.icbc.com.cn\:8888   cas  口
+			mall.icbc.com.cn\:8180         mall  口
+		memcached.nodeList=82.200.30.236\:11211        址	
+	 ：WEB-INF/classes/env.properties中
+		cas.server.url=http\://login.mall.icbc.com.cn\:8888/cas  	
+		cas.server.login=http\://login.mall.icbc.com.cn\:8888/cas/login #login.mall.icbc.com.cn\:8888 
+		cas.client.url=http\://mall.icbc.com.cn\:8180/j_spring_cas_security_check   
+		cas.logout.url=http\://login.mall.icbc.com.cn\:8888/cas/logout?service\=http\://mall.icbc.com.cn\:8180/ 
+		  
+			login.mall.icbc.com.cn\:8888   cas  口
+			mall.icbc.com.cn\:8180         mall  口
+		tair 
+		tair.nodeList=82.200.30.60\:8098  tair   址
+		tair.groupName=group_1
+		tair.namespace=1000
+		tair.expiration=600
+		tair.opTimeout=10000
+		
+	jvm  ：
+		 2 mall 
+		-Dclient.encoding.override 
+		-Dfile.encoding
+		  
+		-DpropertyPath  cas 的 WEB-INF/classes下
+		-Dspring.profiles.active=dev 
+		
+2.mall  
+	 ：WEB-INF/classes/env.properties中
+		cas.server.url=http\://login.mall.icbc.com.cn\:8888/cas
+		cas.server.login=http\://login.mall.icbc.com.cn\:8888/cas/login
+		cas.client.url=http\://mall.icbc.com.cn\:8180/j_spring_cas_security_check
+		cas.logout.url=http\://login.mall.icbc.com.cn\:8888/cas/logout?service\=http\://mall.icbc.com.cn\:8180/
+	    #  
+		eBankUrl=https\://82.201.30.119\:11491/icbc/Emall/main/login_mall.jsp
+		#  
+		mallRegUrl=http\://mall.icbc.com.cn\:8180/registerUser.jhtml
+		#  
+		mallFindPasUrl=http\://mall.icbc.com.cn\:8180/passWord/memberGetpass.jhtml
+		#  
+		mallDefUrl=http\://mall.icbc.com.cn\:8180/index.jhtml
+  		
+  		  
+				login.mall.icbc.com.cn\:8888   cas  口
+				mall.icbc.com.cn\:8180   mall  口
+				
+		tair 
+		tair.nodeList=82.200.30.60\:8098  tair   址
+		tair.groupName=group_1
+		tair.namespace=1000
+		tair.expiration=600
+		tair.opTimeout=10000
+  
+   ：WEB-INF/spring/emall-security.xml中
+
+	   <port-mappings>
+	         <port-mapping http="8180" https="8888"/>
+	   </port-mappings>
+
+	 当http，https    。   http 将 8180 mall  
+	 
+    ：
+	1. 在cas  的host  入mall  置
+		mall 的IP mall.icbc.com.cn
+	2. 在mall  的host  入cas  置 
+		cas 的IP login.mall.icbc.com.cn
+	3.      径WEB-INF        件
+	 ：
+	 ：/data/IBM/WebSphere/AppServer1/profiles/AppSvr01/installedApps/CellDmgr01/cas_war.ear/cas.war/WEB-INF/cas.properties
+	   /data/IBM/WebSphere/AppServer1/profiles/AppSvr01/config/cells/CellDmgr01/applications/cas_war.ear/deployments/cas_war/cas.war/WEB-INF/cas.properties	

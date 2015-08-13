@@ -1,0 +1,28 @@
+<!--<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript" src="../scripts/jquery-1.8.3.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$('.myshopMmenu li').click(function(){
+		$('.myshopMmenu li').removeClass('cur');
+		$(this).toggleClass('cur')
+	})
+	
+})
+</script>--> 
+<div class="mmenu fl">
+  <h2>我的商城</h2>
+  <ul class="myshopMmenu">
+    <li class="cur"><a href="../member.html">账户信息</a></li> 
+    <li><a href="../member_orders.html">我的订单</a></li>
+    <li><a href="../member_favorite.html">我的收藏</a></li>
+    <li><a href="../member_coupons.html">电子券管理</a></li>
+    <li><a href="../member_userinfo_info.html">修改会员信息</a></li>
+    <li><a href="../member_value.html">我的经验值</a></li>
+    <li><a href="../member_address_upd.html">收货地址</a></li>
+    <li><a href="../member_reviews.html">商品评论</a></li>
+    <li><a href="../member_msg.html">我的站内信</a></li>
+    <li><a href="../member_complaint.html">我的商品投诉</a></li>
+    <li><a href="../member_report.html">我的商户举报</a></li>
+    <li><a href="../member_vs.html" class="tj">信用卡积分兑换</a></li>
+  </ul>
+</div>

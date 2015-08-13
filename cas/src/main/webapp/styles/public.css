@@ -1,0 +1,149 @@
+@charset "utf-8";
+*{margin: 0; padding: 0;}
+body{word-wrap:keep-all;margin:0 auto;padding:0; min-width:1000px;}
+a:focus{outline:none;}
+img{border: 0;vertical-align:middle;}
+form{ margin:0; padding:0;}
+select,input,body,th,td{color: #333;font-family:Arial, "宋体"; font-size:12px;line-height:20px;}
+h1{ font-size:16px;}
+h2{ font-size:14px;}
+h3{ font-size:12px;}
+h4{ font-size:12px; font-weight:normal;}
+li{ list-style-type:none;}
+a{ cursor:pointer;}
+a:link,
+a:visited {color: #333;text-decoration:none;}
+a:hover,
+a:active {color: #C00;text-decoration:none;}
+.clear {clear:both; height:0; overflow:hidden; display:block; padding:0; margin:0;}
+.clearfix,.main,.left,.right,dl,dt,dd,ul,li{*zoom:1;}
+.clearfix:after,.clearfix:after,.main:after,.left:after,.right:after,dl:after,dt:after,dd:after,ul:after,li:after{clear:both; height:0; overflow:hidden; display:block; visibility:hidden; content:"."; }
+s{ color:#999; padding:0 0 0 5px;}
+.yh,
+.yh td,
+.yh th{ font-family:"微软雅黑","黑体"}
+.ads{ padding:5px 0 0 0;}
+
+.size12{ font-size:12px;}
+
+.black,
+a.black,
+.black a:link,
+.black a:visited {color: #000;}
+.black a:hover,
+.black a:active {color: #069;}
+
+a.red,
+.red a:link,
+.red a:visited {color: #C00;}
+.red a:hover,
+.red a:active {color: #069;}
+
+.gray,
+a.gray,
+.gray a:link,
+.gray a:visited {color: #999;}
+.gray a:hover,
+.gray a:active {color: #C00;}
+
+.gray2,
+a.gray2,
+.gray2 a:link,
+.gray2 a:visited {color: #2a9ca7;}
+.gray2 a:hover,
+.gray2 a:active {color: #000;}
+
+.wi,
+a.wi,
+.wi a:link,
+.wi a:visited {color: #fff;}
+.wi a:hover,
+.wi a:active {color: #000;}
+
+a.blue,
+.blue a,
+.blue a:link,
+.blue a:visited {color: #069;}
+.blue a:hover,
+.blue a:active {color: #F00;}
+
+.top{ height:37px; padding:0 0 1px 0; margin:0 auto; background:url(../images/bg_page.gif) repeat-x 0 0;}
+.top dl{ width:1000px; padding:0; margin:0 auto; line-height:37px;}
+.top dl dt{ float:left; padding:0; margin:0;overflow:hidden;}
+.top dl dt a{ padding:0 0 0 10px;}
+.top dl dd{ float:right; padding:0; margin:0;overflow:hidden; text-align:right; color: #ccc;}
+.top dl dd a{ padding:0 8px 0 8px;}
+.top dl dd span{ padding:0 0 0 8px; color:#069;}
+.top dl dd strong{ font-size:16px; font-style:italic; font-family:Arial, Helvetica, sans-serif; color:#C00;}
+
+.head{ width:1000px; height:80px; margin:0 auto; padding:5px 0 0 0;}
+.head .left{ width:370px;}
+.head .right{height:80px; padding:0; width:610px; background:url(../images/bg_cat.gif) no-repeat right 5px;}
+.head .right dl.line1{ height:50px;line-height:32px; padding:0;}
+.head .right dl.line1 dt{ width:405px; float:left; padding:15px 0 0 0; height:32px; margin:0; background: url(../images/bg_search.gif) no-repeat 0 15px; }
+.head .right dl.line1 dt ul{ float:left; width:81px; padding:2px; cursor:pointer; height:26px; overflow:hidden; z-index:1; position:relative;}
+.head .right dl.line1 dt ul li{padding:0 0 0 6px; height:26px; line-height:26px;}
+.head .right dl.line1 dt ul.here {background: url(../images/bg_search2.gif) no-repeat 0 0; height:104px;}
+.head .right dl.line1 dt ul.here li:hover,
+.head .right dl.line1 dt ul.here li:active {color: #2a9ca7;}
+.head .right dl.line1 dt input{ height:16px; background:none; width:245px; border:0; padding:8px 0; margin:0; line-height:16px; float:left;}
+.head .right dl.line1 dt input.search{ width:75px; text-align:center; height:32px; padding:0;background: url(../images/bottom_search.gif) no-repeat 0 0; cursor:pointer;}
+
+.head .right dl.line1 dd{width:200px; float:right; padding:5px 0 0 0;}
+.head .right dl.line1 dd ul{ /*width:189px; padding:0; margin:0 10px 0 0;*/}
+.head .right dl.line1 dd ul li.buy{ float:left; width:130px; color:#000;padding:8px 0 0 65px; margin:0;cursor:pointer;}
+.head .right dl.line1 dd ul li.buy strong{ color: #09C;}
+.head .right dl.line1 dd ul li.buy ul{ width:350px; background:#f2f8f9; padding:5px; border:solid 2px #00a496;position: absolute; top:80px; position: relative\9; top:0\9; left:auto; margin:7px 0 0 -240px;*margin:-1px 0 0 -240px; z-index:3; display:none;}
+.head .right dl.line1 dd ul li.buy ul li{ width:350px; line-height:18px; padding:5px 0 5px 0;}
+.head .right dl.line1 dd ul li.buy ul li img{ width:50px; height:50px; float:left; padding:0 10px 0 0;}
+.head .right dl.line1 dd ul li.buy ul li span{ float:right;display:block; color:#666; text-align:right;}
+.head .right dl.line1 dd ul li.buy ul li strong{ color:#F60;}
+.button1{ display:block; background:url(../images/button1.gif) no-repeat 0 5px; height:20px; line-height:22px; overflow:hidden; padding:5px 0 0 0; width:122px; text-align:center; cursor:pointer;}
+a.button1:link,
+a.button1:visited {color: #c60;}
+a.button1:hover,
+a.button1:active {color: #C00;}
+.head .right dl.line1 dd ul li.buy ul li .button1{ float:right;}
+.head .right dl.line1 dd ul li.go{ width:55px;float:right;height:30px; margin:0;}
+.head .right dl.line1 dd ul li.go a{ display:block; width:55px; height:50px;}
+.head .right .line2{ height:30px; line-height:25px; padding:0; width:auto; overflow:hidden;}
+.head .right .line2 a{ padding:0 12px 0 0;}
+.head .right .line2 a:link,
+.head .right .line2 a:visited {color: #999;}
+.head .right .line2 a:hover,
+.head .right .line2 a:active {color: #2a9ca7;}
+
+.main{margin: 0 auto; padding: 0 0 10px 0; overflow:hidden; width:1000px;}
+.left{float:left;margin:0 auto; padding: 0; }
+.right{float:right;margin:0 auto; padding: 0;}
+
+
+
+.foot{ padding:15px 0 30px 0; width:1000px; margin:10px auto 0 auto; text-align:center;}
+.foot .bottom{ padding:20px 0 0 0; color:#666; line-height:25px;}
+.foot .bottom span { float:left; margin:0 20px 30px 100px}
+.foot .bottom img { float:left; display:block;}
+.foot .bottom strong{ color:#00a496;}
+ 
+ 
+.backToTop {
+ display: none;
+ width: 28px;
+ height:28px;
+/*  line-height: 1.2;
+ padding: 5px 0;
+background-color: #000;
+ color: #fff;
+ font-size: 12px;
+ text-align: center;*/
+ position: fixed;
+ _position: absolute;
+ right: 10px;
+ bottom: 100px;
+ _bottom: "auto";
+ cursor: pointer;
+ opacity: .6;
+ filter: Alpha(opacity=60);
+ background:url(../images/lanren_top.jpg);
+
+}

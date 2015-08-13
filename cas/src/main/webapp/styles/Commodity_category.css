@@ -1,0 +1,40 @@
+.cate-all dl{clear:both; overflow:hidden; margin-bottom:10px;}
+.cate-all dl dt,.cate-all dl dd{float:left; text-align:center;}
+.cate-all dl dt a,.cate-all dl dd a{color:#666; text-decoration:none;}
+.cate-all dl dt{border-bottom:2px solid #C8000B; width:40px; height:20px; line-height:20px;}
+.cate-all dl dt a{color:#C8000B;}
+.cate-all dl dd{border-left:1px solid #ccc; width:34px; height:22px; line-height:22px;}
+.cate-all dl dd a{font-size:14px;}
+.cate-all h2{font-size:24px;color:#666; background:url(../../images/shop/tit_bg.png) repeat-x; height:30px; line-height:30px; margin:10px 0; text-indent:0.5em;}
+
+
+
+.cate_list{ border:solid 1px #dadada; background:#f7f7f7; line-height:35px; padding:3px 20px;}
+.cate_list a{ display:inline-block; width:222px; color:#666;}
+
+/*地图样式*/
+.c_ico1{background:url(../../images/shop/ico1.gif) no-repeat 0 5px;}
+.c_ico2{background:url(../../images/shop/ico2.gif) no-repeat 0 5px;}
+.c_ico3{background:url(../../images/shop/ico3.gif) no-repeat 0 5px;}
+.c_ico4{background:url(../../images/shop/ico4.gif) no-repeat 0 5px;}
+.c_ico5{background:url(../../images/shop/ico5.gif) no-repeat 0 5px;}
+.c_ico6{background:url(../../images/shop/ico6.gif) no-repeat 0 5px;}
+.c_ico7{background:url(../../images/shop/ico7.gif) no-repeat 0 5px;}
+.c_ico8{background:url(../../images/shop/ico8.gif) no-repeat 0 5px;}
+.c_ico9{background:url(../../images/shop/ico9.gif) no-repeat 0 5px;}
+
+.cate-all02{width:950px; overflow:hidden; padding:30px 0 0;}
+.cate-all02 ul{width:300px;float:left; margin-right:25px;}
+.cate-all02 li{border-bottom:1px dashed #ccc;padding-left:40px; margin-bottom:15px; padding-bottom:15px;}
+.cate-all02 li h3{margin-bottom:10px;}
+.cate-all02 li h3 a{color:#333;font-size:24px;}
+.cate-all02 li dl{overflow:hidden; clear:both; margin-bottom:10px;}
+.cate-all02 li dt,.cate-all02 li dd{float:left;}
+.cate-all02 li dt{width:60px;}
+.cate-all02 li dt a{color:#096EA2;}
+.cate-all02 li dd{width:200px;}
+.cate-all02 li dd em{border-left:1px solid #999; display:inline-block; padding:0 5px;}
+.cate-all02 li dd em a{color:#333;}
+
+
+

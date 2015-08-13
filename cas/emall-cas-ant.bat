@@ -1,0 +1,1 @@
+ant -d -l merchant.log

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.springframework.org/schema/webflow
+                          http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+    <var name="credentials" class="com.icbc.emall.cas.validate.UserCredentials" />
+	
+    <on-start>
+        <evaluate expression="phoneRemoteLoginAction" />
+    </on-start>
+    
+    <decision-state id="hasError">
+		<if test="flowScope.error neq null  &amp;&amp; flowScope.error neq '' " then="hasfailPageCheck" else="sendTicketGrantingTicket" />
+	</decision-state>
+	<action-state id="hasfailPageCheck">
+        <evaluate 
+        expression="generateResponse.getResponse( flowRequestContext,true)" 
+        result-type="org.jasig.cas.authentication.principal.Response" 
+        result="flowScope.response" />
+        <transition to="postView" />
+    </action-state> 
+	<action-state id="sendTicketGrantingTicket">
+        <evaluate expression="sendTicketGrantingTicketAction" />
+		<transition to="serviceCheck" />
+	</action-state>
+	<decision-state id="serviceCheck">
+		<if test="flowScope.service neq null" then="generateServiceTicket" else="viewGenericLoginSuccess" />
+	</decision-state>
+	
+	
+	<action-state id="generateServiceTicket">
+        <evaluate expression="generateServiceTicketAction" />
+		<transition on="success" to ="getReturnResponse" /> 
+		<transition on="gateway" to="hasError" />
+	</action-state>
+	
+	
+	<action-state id="getReturnResponse">
+        <evaluate 
+        expression="generateResponse.getResponse( flowRequestContext,false)" 
+        result-type="org.jasig.cas.authentication.principal.Response" 
+        result="flowScope.response" />
+        <transition to="redirectView" />
+    </action-state>
+	
+	<end-state id="postView" view="postResponseView">
+        <on-entry>
+            <set name="requestScope.parameters" value="flowScope.response.attributes" />
+            <set name="requestScope.originalUrl" value="flowScope.response.url" />
+        </on-entry>
+    </end-state>
+    <end-state id="viewGenericLoginSuccess" view="casLoginGenericSuccessView" />
+    <!-- <end-state id="redirectView" view="externalRedirect:http://mall.icbc.com.cn:8180/member/member.jhtml" /> flowScope.warnCookieValue -->
+    
+    <end-state id="redirectView" view="externalRedirect:${flowScope.responseUrl}"/>
+<!-- 	<decision-state id="redirectView">
+		<if test="flowScope.resiveUserId neq null" then="redirectView2" else="redirectView1" />
+	</decision-state> -->
+	
+   <!--  <end-state id="redirectView" view="externalRedirect:${requestScope.responseUrl}"/> -->
+ 	<!-- <end-state id="redirectView1" view="externalRedirect:http://mall.icbc.com.cn:8180/member/member.jhtml" />
+    <end-state id="redirectView2" view="externalRedirect:http://mall.icbc.com.cn:8180/index.jhtml"/>
+     -->
+    <global-transitions>
+		<transition to="viewServiceErrorView" on-exception="org.springframework.webflow.execution.repository.NoSuchFlowExecutionException" />
+        <transition to="viewServiceSsoErrorView" on-exception="org.jasig.cas.services.UnauthorizedSsoServiceException" />
+		<transition to="viewServiceErrorView" on-exception="org.jasig.cas.services.UnauthorizedServiceException" />
+	</global-transitions>
+</flow>

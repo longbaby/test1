@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="GBK"?>
+<TCPServers name="RegistriesTCPServer">
+		<!-- 套接字配置 -->
+		<port>7465</port>
+		<backlog></backlog>
+		<serverSotimeout>60000</serverSotimeout>
+		<serverTimeout>60000</serverTimeout>
+		<poolon>true</poolon>
+		<tcpNoDelay>false</tcpNoDelay>
+		<soLinger>-1</soLinger>
+		<soTimeout>10000</soTimeout>
+		
+		<!-- 多线程处理器配置 -->
+		<maxThreads>10</maxThreads>
+		<maxSpareThreads>2</maxSpareThreads>
+		<minSpareThreads>1</minSpareThreads>
+		<threadPriorty>5</threadPriorty>
+		
+		<!-- 访问Server使用的用户名,密码 -->
+		<user>admin</user>
+		<password>admin</password>
+		
+		<!-- 请求处理Handler。描述请求代码与请求处理器之间的关系 -->
+		<!-- 身份验证 -->
+		<request0001>com.icbc.by.cachemanager.server.AuthenticationReqHandler</request0001>
+		<!-- 获取缓存描述信息 -->
+		<request0002> </request0002>
+		<!-- 刷新缓存 -->
+		<request0003>com.icbc.by.cachemanager.server.RefreshCacheHandler</request0003>
+		<!-- 定时刷新缓存 -->
+		<request0004>com.icbc.by.cachemanager.server.SchedulRefreshCacheHandler</request0004>
+		
+</TCPServers>

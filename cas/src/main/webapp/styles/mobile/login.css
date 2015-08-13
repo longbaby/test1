@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/* CSS Document */
+.login-box{}
+.logo{ width:50%; margin:0 auto; padding:5em 0; display:block;}
+.logo img{ width:100%;}
+.login-input{ padding:20px 10%;}
+.login-input a{ display:block;}
+.login-input input{ display:block; background:transparent; width:100%; margin:auto;}
+.login-input input.border-pink{ border-bottom:solid 1px #f75f67;}
+.login-input input.border-org{ border-bottom:solid 1px #f75f67;}
+.w100{ width:100%;}
+.login-select{padding:1em 3em;}
+.login-select .ui-checkbox{ margin-left:-8px;}
+.login-box .fieldset{ margin:0 10%;}
+.ryg .logo{ padding:5em 0 0;}
+.ryg .logo-bottom{ padding:3em 20% 0;}
+.logo-refresh{ width:20%;}
+.logo-right{ width:80%;}
+/**/
+.reg-bg-green{ background-color:#f3f8e4; /*border-bottom:solid 1px #ccc;*/ padding:40px 0; }
+.reg-bg-pink{ background-color:#fef3f0; border-bottom:none; padding:40px 0; }
+.reg-tip{/* width:10em;*/ margin:auto;font-size:142%; text-align:center;}
+.reg-tip i{ vertical-align:middle; display:inline-block; font-size:180%; color:#c40000; margin-top:-0.15em;}
+.reg-info{/*width:10em;*/ margin:auto; padding:0.624em 0.8em 0;}
+/*.reg-info-c{width:24em;}*/
+.reg-tit{ font-weight:bold; font-size:108%;padding:50px 20px 0;}
+.reg-ul-go{ display:block; padding:10px 20px;}
+.reg-ul-go li{ display: table; border:solid 1px #ccc; width:100%; background-color:#fff; border-radius:1px; margin-top:-1px; position:relative;}
+.reg-ul-go li a{ display:block; padding:10px 15px;}
+.reg-ul-go li i{width:0.7em; height:0.7em; vertical-align:middle; display:inline-block; position:absolute; right:10px; top:50%; margin-top:-0.35em;}
+/*new*/
+.fieldset fieldset .round img{width: 32px; height: 32px; position:absolute; left:0; top:0;}
+/*img*/
+.login-jinrong{}
+.login-rongyigou{}
+
+
+
+
+
+

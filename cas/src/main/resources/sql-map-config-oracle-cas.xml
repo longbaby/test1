@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings useStatementNamespaces="true" enhancementEnabled="true"
+		maxTransactions="64" maxRequests="1024" maxSessions="256" />
+
+	<!-- 身份认证模块 -->
+	<sqlMap resource="sqlmap/oracle/auth/AuthSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/auth/MallLoginLogInfoSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/auth/MallLoginInfoSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/auth/EBankSavedUserSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/auth/MallUserInfoSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/MallMemberinfoSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/ciscode/CiscodeSQL.xml" />
+	
+	<sqlMap resource="sqlmap/oracle/auth/MerchantLoginInfoSQL.xml"/>              
+	<sqlMap resource="sqlmap/oracle/auth/MerchantUserInfoSQL.xml"/>               
+	<sqlMap resource="sqlmap/oracle/auth/MerchantLoginLogInfoSQL.xml"/>
+	<sqlMap resource="sqlmap/oracle/merchant/MerchantResetPasswordSQL.xml"/>   
+	
+<!-- 地区码 -->
+<sqlMap resource="sqlmap/oracle/merchant/AreacodeMapSQL.xml" />
+
+	<sqlMap resource="sqlmap/oracle/system/SysParamsSQL.xml" />
+
+	<sqlMap resource="sqlmap/oracle/system/SerialNoSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/DualSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/system/AgreementSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/ebankuser/EBankUserAddrSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/system/AddressSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/rbac/BlackListSQL.xml" />
+	<!-- 工作流 -->                       
+	<sqlMap resource="sqlmap/oracle/wf/WfAuditSQL.xml"/>                        
+	<sqlMap resource="sqlmap/oracle/wf/WfInstanceSQL.xml"/>   
+<!-- 广告模块 -->
+	<sqlMap resource="sqlmap/oracle/ad/AdInfoSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/ad/ColumnSQL.xml"/> 
+	<sqlMap resource="sqlmap/oracle/ad/PageSQL.xml"/>  
+	<sqlMap resource="sqlmap/oracle/recommend/ColumnCategorySQL.xml"/>  
+	<sqlMap resource="sqlmap/oracle/recommend/RecommendModuleSQL.xml" />
+	<sqlMap resource="sqlmap/oracle/MallStaffBasicInfoSQL.xml"/>   
+	<sqlMap resource="sqlmap/oracle/lottery/LotteryUserinfoSQL.xml"/>   
+	
+	<sqlMap resource="sqlmap/oracle/mobilerecharge/PinMacInfoSQL.xml"/>   
+	<sqlMap resource="sqlmap/oracle/secretKey/SecretKeySQL.xml"/>   
+	
+	<!-- 应用开关表 -->
+	<sqlMap resource="sqlmap/oracle/SwitchSQL.xml"/>
+</sqlMapConfig>

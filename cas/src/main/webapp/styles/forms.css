@@ -1,0 +1,32 @@
+/*================= input =================*/
+/*input*/
+.input20{ width:20px;}
+.input40{ width:40px;}
+.input60{ width:60px;}
+.input80{ width:80px;}
+.input100{ width:100px;}
+.input120{ width:120px;}
+.input200{ width:200px;}
+.input250{ width:250px;}
+.input300{ width:300px;}
+.input350{ width:350px;}
+.input400{ width:400px;}
+.input450{ width:450px;}
+.input500{ width:500px;}
+
+/*textarea*/
+.text_25{ width:250px;}
+.text_30{ width:300px;}
+.text_35{ width:350px;}
+.text_40{ width:400px;}
+.text_45{ width:450px;}
+.text_50{ width:500px;}
+
+/*border color*/
+/*.{ height: 28px; line-height: 28px;vertical-align: middle;border: 1px solid #D8D8D8; }*/
+.input{ height: 24px; line-height: 24px;padding: 0 3px;border: 1px solid #D8D8D8;}
+.bor_org { background: #FCEBCF; border-color: #F9CC88; color: #C37900; }
+.bor_blue { background: #EEF9FD; border-color: #BCD7E2; color: #5F8695; }
+.bor_red{ background-color: #F2DEDE;border-color: #EED3D7;color: #B94A48;}
+
+/*================= /input =================*/

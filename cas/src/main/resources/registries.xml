@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="GBK"?>
+<Registries>
+   <!--刷新为基本服务  -->
+	<Registry 
+		name="setToBaseService" 
+		implementationClass="com.icbc.by.cachemanager.server.impl.RefreshBasicServiceImpl"
+		description="set to base service"/>
+	<!--刷新为正常服务  -->
+	<Registry 
+		name="setToNormalService" 
+		implementationClass="com.icbc.by.cachemanager.server.impl.RefreshNormalServiceImpl"
+		description="set to normal service"/>
+	<!-- 刷新为内部验证服务 -->
+    <Registry 
+		name="setToInnerValidService" 
+		implementationClass="com.icbc.by.cachemanager.server.impl.RefreshInnerValiServiceImpl"
+		description="set to inner valid service"/>
+</Registries>

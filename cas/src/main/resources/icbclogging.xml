@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="GBK"?>
+<!--日志框架运行时属性配置-->
+<ICBCLogging>
+
+	<!--是否记录日志框架内部信息，包括加载以及异常信息-->
+	<IsLogInternalMessage>true</IsLogInternalMessage>
+	
+	<!--默认日志工厂配置(DefaultLogFactoryImpl)属性，Factoryname为工厂名称，FactoryImplementationClass为工厂实现类-->
+	<LogFactory FactoryName="DefaultLogFactoryImpl" FactoryImplementationClass="com.icbc.by.logging.impl.DefaultLogFactoryImpl">
+		
+		<!--此日志工厂对应的日志实现类。如果未指定，则使用日志默认实现类-->
+		<LogImplementationCLass>com.icbc.by.logging.impl.SimpleAsynLogger</LogImplementationCLass>
+		
+		<!--日志文件存储路径，如果未指定则在程序运行当前路生成日志-->
+		<LogSaveFilePath>d:\testlog1111\</LogSaveFilePath>
+
+		<!--==日志级别:0-ALL,1-TRACE,2-DEBUG,3-INFO,4-WARN,5-Error,6-FATAL,7-CLOSE==-->
+		<LogLevel>4</LogLevel>
+		
+		<!--异步日志缓存初始大小，只对SimpleAsynLogger有效-->
+		<LogBufferSize>100</LogBufferSize>
+		
+		<CargadorNumber>5</CargadorNumber>
+		
+	</LogFactory>
+	
+	<!--Web系统缓存管理框架使用的日志工厂配置(CacheManagerLogFactory)属性，Factoryname为工厂名称，FactoryImplementationClass为工厂实现类-->
+	<LogFactory FactoryName="CacheManagerLogFactory" FactoryImplementationClass="com.icbc.by.logging.impl.DefaultLogFactoryImpl">
+		
+		<!--此日志工厂对应的日志实现类。如果未指定，则使用日志默认实现类-->
+		<LogImplementationCLass>com.icbc.by.logging.impl.SimpleAsynLogger</LogImplementationCLass>
+		
+		<!--日志文件存储路径，如果未指定则在程序运行当前路生成日志-->
+		<LogSaveFilePath>/home/bealog/</LogSaveFilePath>
+
+		<!--==日志级别:0-ALL,1-TRACE,2-DEBUG,3-INFO,4-WARN,5-Error,6-FATAL,7-CLOSE==-->
+		<LogLevel>3</LogLevel>
+		
+		<!--异步日志缓存初始大小，只对SimpleAsynLogger有效-->
+		<LogBufferSize>100</LogBufferSize>
+		
+	</LogFactory>
+		
+	<!--监控模块日志工厂配置，只支持向数据库中保存数据(insert操作)。-->
+	<LogFactory FactoryName="MonitorLogFactoryImpl" FactoryImplementationClass="com.icbc.by.logging.impl.MonitorLogFactoryImpl">
+		
+		<!--监控日志实现类。默认执行procedure标签指定的存储过程。但每个日志实例可以使用setProcName方法更改存储过程-->
+		<LogImplementationCLass>com.icbc.by.logging.impl.SimpleAsynLogger</LogImplementationCLass>
+		
+		<!--==日志级别:0-ALL,1-TRACE,2-DEBUG,3-INFO,4-WARN,5-Error,6-FATAL,7-CLOSE==-->
+		<LogLevel>1</LogLevel>
+		
+		<!--日志文件存储路径，如果未指定则在程序运行当前路生成日志-->
+		<LogSaveFilePath>d:\testlog\</LogSaveFilePath>
+		
+		<!-- 记录数据所使用的存储过程,此存储过程不需要返回值 -->
+		<procedure>proc_log_test</procedure>
+		<!--数据库连接池实现类，提高两个实现类：DefaultConnectionPool(自行实现的数据库连接池)；JNDIConnectionPool(基于应用服务器数据库连接池)-->			
+		<pool.class>com.icbc.by.log.sql.DefaultConnectionPool</pool.class>
+		<!--配置1：自定义数据库连接池需要填写的配置 -->
+		<db.driver>oracle.jdbc.driver.OracleDriver</db.driver>
+		<db.url>jdbc:oracle:thin:@83.252.30.58:1521:CCISDB</db.url>
+		<db.username>devuser</db.username>
+		<db.password>devuser58</db.password>
+		<pool.name>connectionPool</pool.name>
+		<db.initnumber>20</db.initnumber>
+		<db.maxnumber>60</db.maxnumber>
+		<testtable.name></testtable.name>
+		<!--配置2：应用服务器数据库连接池需要填写的配置-->
+		<jndidatasource>jdbc/ORADS</jndidatasource>
+		
+		<!--异步记录日志的线程池配置-->
+		<!--是否以daemon线程运行：true or false-->
+		<daemon>true</daemon>
+		<!-- 线程池最大线程数 -->
+		<threadpoolname>MLTP</threadpoolname>
+		<maxthreads>200</maxthreads>
+		<maxsparethreads>100</maxsparethreads>
+		<minsparethreads>40</minsparethreads>
+		<threadpriority>4</threadpriority>
+		
+	</LogFactory>
+	
+</ICBCLogging>
